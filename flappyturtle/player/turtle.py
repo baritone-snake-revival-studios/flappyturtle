@@ -11,3 +11,5 @@ class Turtle(object):
         self.x_vel = 0
         self.y_vel = 0
 
+    def position(self):
+        return [self.pos_x, self.pos_y]
