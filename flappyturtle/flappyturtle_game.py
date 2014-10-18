@@ -1,11 +1,7 @@
-import pygame
-import re
-import os
-from pygame.locals import *
 import sys
-import random
+import pygame
+from flappyturtle.display.window import Window
 
-from flappyturtle.window import Window
 
 __author__ = 'neil@everymundo.com'
 
