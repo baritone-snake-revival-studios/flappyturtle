@@ -18,7 +18,7 @@ def run_game():
     while True:
     # Check the keyboard & mouse
         for event in pygame.event.get():
-            if event.type == QUIT:
+            if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
 
