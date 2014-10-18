@@ -1,6 +1,7 @@
 import sys
 import pygame
 from flappyturtle.display.window import Window
+from flappyturtle.player.turtle import Turtle
 
 
 __author__ = 'neil@everymundo.com'
@@ -15,12 +16,17 @@ def run_game():
     FPS = 60
     FpsClock = pygame.time.Clock()
 
+    game_turtle = Turtle()
+
     while True:
     # Check the keyboard & mouse
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
+
+        DISPLAY_SURFACE.fill((55, 180, 200))
+        DISPLAY_SURFACE.blit(game_turtle.image, [game_turtle.pos_x, game_turtle.pos_y])
 
         pygame.display.update()
         FpsClock.tick(FPS)

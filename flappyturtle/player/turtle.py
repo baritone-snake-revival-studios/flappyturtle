@@ -1,9 +1,12 @@
+import os
+import pygame
 
 
 class Turtle(object):
     def __init__(self):
         super().__init__()
-        self.image = 'sprites/turtle.png'
+        self.image_path = 'sprites/turtle.png'
+        self.image = pygame.image.load(os.path.join('sprites', 'turtle.png'))
 
         self.pos_x = 0
         self.pos_y = 0
