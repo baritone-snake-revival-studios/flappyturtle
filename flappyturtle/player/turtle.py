@@ -16,3 +16,10 @@ class Turtle(object):
 
     def position(self):
         return [self.pos_x, self.pos_y]
+
+    def update(self):
+        pass
+
+    def jump(self):
+        pass
+
