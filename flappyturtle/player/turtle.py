@@ -5,16 +5,16 @@ import pygame
 class Turtle(object):
     swim_speed = 175
 
-    def __init__(self):
+    def __init__(self, position):
         super().__init__()
         self.image_path = 'sprites/turtle.png'
         self.image = pygame.image.load(os.path.join('sprites', 'turtle.png'))
 
-        self.pos_x = 0
-        self.pos_y = 0
+        self.pos_x = position[0]
+        self.pos_y = position[1]
 
         self.vel_x = 0
-        self.vel_y = 10
+        self.vel_y = 0
 
     def position(self):
         return [self.pos_x, self.pos_y]
