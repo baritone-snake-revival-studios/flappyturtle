@@ -3,7 +3,8 @@ import pygame
 
 
 class Turtle(object):
-    swim_speed = 1
+    swim_speed = 175
+
     def __init__(self):
         super().__init__()
         self.image_path = 'sprites/turtle.png'
@@ -12,17 +13,17 @@ class Turtle(object):
         self.pos_x = 0
         self.pos_y = 0
 
-        self.x_vel = 0
-        self.y_vel = 0
+        self.vel_x = 0
+        self.vel_y = 10
 
     def position(self):
         return [self.pos_x, self.pos_y]
 
     def update(self, time):
-        self.pos_y = self.pos_y + self.pos_y *time
+        self.pos_y += self.vel_y * time
 
-    def swim(self, up, down):
-        if up == True:
-            self.y_vel += Turtle.swim_speed
+    def swim(self, up):
+        if up:
+            self.vel_y = -Turtle.swim_speed
         else:
-            self.y_vel -= Turtle.swim_speed
+            self.vel_y = Turtle.swim_speed
