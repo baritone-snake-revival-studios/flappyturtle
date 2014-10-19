@@ -18,7 +18,7 @@ def run_game():
     FpsClock = pygame.time.Clock()
 
     game_world = World()
-    game_turtle = game_world.add_player()
+    game_turtle = game_world.add_player(window.center())
 
     time_last_update = 0
 
@@ -34,7 +34,6 @@ def run_game():
                     game_turtle.swim(up=True)
                 if event.key == pygame.K_DOWN:
                     game_turtle.swim(up=False)
-
 
         game_turtle.update((time - time_last_update) / 1000)
 
