@@ -1,10 +1,12 @@
+import pygame
+
 __author__ = 'neil@everymundo.com'
 
 
 class Obstacle(object):
-    def __init__(self):
+    def __init__(self, image_path):
         super().__init__()
-        self.image = None
+        self.image = pygame.image.load(image_path)
+
         self.pos_x = 0
         self.pos_y = 0
-
