@@ -42,7 +42,10 @@ def run_game():
         # Background
         DISPLAY_SURFACE.blit(game_world.background, (0, 0))
         # Scrolling Sand
-        DISPLAY_SURFACE.blit(game_world.sand_image, (game_world.sand_pos, window.height - game_world.sand_image.get_height()))
+        DISPLAY_SURFACE.blit(game_world.sand_image,
+                             (game_world.sand_pos, window.height - game_world.sand_image.get_height()))
+        DISPLAY_SURFACE.blit(game_world.sand_image,
+                             (game_world.sand_pos + window.width-1, window.height - game_world.sand_image.get_height()))
         # Player
         DISPLAY_SURFACE.blit(game_turtle.image, game_turtle.position())
 
