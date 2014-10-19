@@ -19,9 +19,10 @@ class World():
     def add_obstacle(self, obstacle_type):
         if obstacle_type == 'coral':
             self.obstacles.append(Obstacle('sprites/coral.png'))
+
     def update(self, time):
         turtle_bounds = self.turtle.bounds()
         if turtle_bounds[1] <= 0:
-            self.turtle.toohigh(0)
+            self.turtle.too_high(0)
         if turtle_bounds[3] >= self.height:
-            self.turtle.toolow(self.height)
+            self.turtle.too_low(self.height)
