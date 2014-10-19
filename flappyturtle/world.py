@@ -34,8 +34,10 @@ class World():
         return self.turtle
 
     def add_obstacle(self, obstacle_type):
+        coral_x = self.width
+        coral_y = self.height
         if obstacle_type == 'coral':
-            self.obstacles.append(Obstacle('sprites/coral_tall.png'))
+            self.obstacles.append(Obstacle('sprites/coral_tall.png', coral_x, coral_y))
 
     def update(self, time):
         turtle_bounds = self.turtle.bounds()
