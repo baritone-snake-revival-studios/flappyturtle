@@ -11,7 +11,8 @@ class Turtle(object):
         self.image = pygame.image.load(os.path.join('sprites', 'turtle.png'))
         self.scale = 0.7
         self.image = pygame.transform.scale(self.image,
-            (int(self.image.get_width() * self.scale), int(self.image.get_height() * self.scale)))
+                                            (int(self.image.get_width() * self.scale),
+                                             int(self.image.get_height() * self.scale)))
 
         self.pos_x = position[0] - (self.image.get_width() / 2)
         self.pos_y = position[1] - (self.image.get_height() / 2)
