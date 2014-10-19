@@ -28,6 +28,14 @@ class Turtle(object):
     def update(self, time):
         self.pos_y += self.vel_y * time
 
+    def too_high(self, new_pos):  # Hehehe...
+        self.vel_y = 0
+        self.pos_y = new_pos
+
+    def too_low(self, new_pos):
+        self.vel_y = 0
+        self.pos_y = new_pos - self.image.get_height()
+
     def swim(self, up):
         if up:
             self.vel_y = -Turtle.swim_speed

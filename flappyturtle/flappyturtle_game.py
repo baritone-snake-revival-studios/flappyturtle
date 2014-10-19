@@ -17,7 +17,7 @@ def run_game():
     FPS = 60
     FpsClock = pygame.time.Clock()
 
-    game_world = World()
+    game_world = World(window.width, window.height)
     game_turtle = game_world.add_player(window.center())
 
     time_last_update = 0
@@ -42,7 +42,6 @@ def run_game():
 
         pygame.display.update()
         FpsClock.tick(FPS)
-
 
 
 
