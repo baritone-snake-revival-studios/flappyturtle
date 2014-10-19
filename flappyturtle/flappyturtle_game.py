@@ -19,6 +19,7 @@ def run_game():
 
     game_world = World(window.width, window.height)
     game_turtle = game_world.add_player(window.center())
+    player_score = 0
 
     time_last_update = 0
 
@@ -55,7 +56,10 @@ def run_game():
         # Obstacles
         for obstacle in game_world.obstacles:
             DISPLAY_SURFACE.blit(obstacle.image, (obstacle.pos_x, obstacle.pos_y))
-            obstacle.check_collision(game_turtle.bounds())
+            if obstacle.check_collision(game_turtle.bounds()):
+                player_score += 1
+                print(player_score)
+
 
         pygame.display.update()
         FpsClock.tick(FPS)

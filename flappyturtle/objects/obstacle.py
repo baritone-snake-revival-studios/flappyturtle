@@ -11,6 +11,7 @@ class Obstacle(object):
 
         self.pos_x = x
         self.pos_y = y - self.image.get_height()
+        self.scored = False
 
     def update(self, velocity):
         self.pos_x += velocity
@@ -25,3 +26,9 @@ class Obstacle(object):
             if self.pos_y < bounds_down < self.pos_y + self.image.get_height():
                 pygame.quit()
                 sys.exit()
+            if not self.scored:
+                self.scored = True
+                return True
+        return False
+
+
