@@ -52,6 +52,11 @@ def run_game():
         # Player
         DISPLAY_SURFACE.blit(game_turtle.image, game_turtle.position())
 
+        # Obstacles
+        for obstacle in game_world.obstacles:
+            DISPLAY_SURFACE.blit(obstacle.image, (obstacle.pos_x, obstacle.pos_y))
+
+
         pygame.display.update()
         FpsClock.tick(FPS)
 

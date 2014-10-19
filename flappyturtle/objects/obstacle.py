@@ -10,5 +10,6 @@ class Obstacle(object):
 
         self.pos_x = 0
         self.pos_y = 0
+
     def update(self, velocity):
         self.pos_x += velocity
