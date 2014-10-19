@@ -1,3 +1,5 @@
+import os
+import pygame
 from flappyturtle.objects.obstacle import Obstacle
 from flappyturtle.player.turtle import Turtle
 
@@ -11,6 +13,15 @@ class World():
         self.obstacles = []
         self.width = width
         self.height = height
+        self.background = pygame.image.load(os.path.join('sprites', 'background.png'))
+        scale_x = self.width / self.background.get_width()
+        scale_y = self.height / self.background.get_height()
+        self.background = pygame.transform.scale(self.background, (self.width, self.height))
+
+        self.sand_image = pygame.image.load(os.path.join('sprites', 'background_sand.png'))
+        self.sand_image = pygame.transform.scale(self.sand_image,
+                                                 (self.width, int(self.sand_image.get_height() * scale_x)))
+        self.sand_pos = 0
 
     def add_player(self, position):
         self.turtle = Turtle(position)

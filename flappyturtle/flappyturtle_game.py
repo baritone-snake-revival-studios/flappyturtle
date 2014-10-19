@@ -39,6 +39,11 @@ def run_game():
         game_world.update((time - time_last_update) / 1000)
 
         DISPLAY_SURFACE.fill((55, 180, 200))
+        # Background
+        DISPLAY_SURFACE.blit(game_world.background, (0, 0))
+        # Scrolling Sand
+        DISPLAY_SURFACE.blit(game_world.sand_image, (game_world.sand_pos, window.height - game_world.sand_image.get_height()))
+        # Player
         DISPLAY_SURFACE.blit(game_turtle.image, game_turtle.position())
 
         pygame.display.update()
