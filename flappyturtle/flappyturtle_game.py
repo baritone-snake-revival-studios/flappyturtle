@@ -2,6 +2,7 @@ import sys
 import pygame
 from flappyturtle.display.window import Window
 from flappyturtle.player.turtle import Turtle
+from flappyturtle.world import World
 
 
 __author__ = 'neil@everymundo.com'
@@ -16,17 +17,29 @@ def run_game():
     FPS = 60
     FpsClock = pygame.time.Clock()
 
-    game_turtle = Turtle()
+    game_world = World()
+    game_turtle = game_world.add_player()
+
+    time_last_update = 0
 
     while True:
-    # Check the keyboard & mouse
+        time = FpsClock.get_time()
+        # Check the keyboard & mouse
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_UP:
+                    game_turtle.swim(up=True)
+                if event.key == pygame.K_DOWN:
+                    game_turtle.swim(up=False)
+
+
+        game_turtle.update((time - time_last_update) / 1000)
 
         DISPLAY_SURFACE.fill((55, 180, 200))
-        DISPLAY_SURFACE.blit(game_turtle.image, [game_turtle.pos_x, game_turtle.pos_y])
+        DISPLAY_SURFACE.blit(game_turtle.image, game_turtle.position())
 
         pygame.display.update()
         FpsClock.tick(FPS)
