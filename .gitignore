@@ -56,3 +56,5 @@ target/
 .idea/
 flappyturtle/Window.py
 flappyturtle/Window.py
+.idea/flappyturtle.iml
+.idea/flappyturtle.iml
