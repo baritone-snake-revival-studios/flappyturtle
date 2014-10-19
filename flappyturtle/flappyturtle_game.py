@@ -55,7 +55,7 @@ def run_game():
         # Obstacles
         for obstacle in game_world.obstacles:
             DISPLAY_SURFACE.blit(obstacle.image, (obstacle.pos_x, obstacle.pos_y))
-
+            obstacle.check_collision(game_turtle.bounds())
 
         pygame.display.update()
         FpsClock.tick(FPS)
