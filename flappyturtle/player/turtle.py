@@ -22,8 +22,19 @@ class Turtle(object):
     def position(self):
         return [self.pos_x, self.pos_y]
 
+    def bounds(self):
+        return [self.pos_x, self.pos_y, self.pos_x + self.image.get_width(), self.pos_y + self.image.get_height()]
+
     def update(self, time):
         self.pos_y += self.vel_y * time
+
+    def too_high(self, new_pos):  # Hehehe...
+        self.vel_y = 0
+        self.pos_y = new_pos
+
+    def too_low(self, new_pos):
+        self.vel_y = 0
+        self.pos_y = new_pos - self.image.get_height()
 
     def swim(self, up):
         if up:
