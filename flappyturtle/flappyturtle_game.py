@@ -36,6 +36,7 @@ def run_game():
                     game_turtle.swim(up=False)
 
         game_turtle.update((time - time_last_update) / 1000)
+        game_world.update((time - time_last_update) / 1000)
 
         DISPLAY_SURFACE.fill((55, 180, 200))
         DISPLAY_SURFACE.blit(game_turtle.image, game_turtle.position())
