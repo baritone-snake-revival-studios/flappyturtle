@@ -9,9 +9,10 @@ class Turtle(object):
         super().__init__()
         self.image_path = 'sprites/turtle.png'
         self.image = pygame.image.load(os.path.join('sprites', 'turtle.png'))
+        self.scale = 1
 
-        self.pos_x = position[0]
-        self.pos_y = position[1]
+        self.pos_x = position[0] - (self.image.get_width() / 2 * self.scale)
+        self.pos_y = position[1] - (self.image.get_height() / 2 * self.scale)
 
         self.vel_x = 0
         self.vel_y = 0
