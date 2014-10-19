@@ -22,6 +22,7 @@ class World():
         self.sand_image = pygame.transform.scale(self.sand_image,
                                                  (self.width, int(self.sand_image.get_height() * scale_x)))
         self.sand_pos = 0
+        self.velocity = 5
 
     def add_player(self, position):
         self.turtle = Turtle(position)
@@ -37,3 +38,6 @@ class World():
             self.turtle.too_high(0)
         if turtle_bounds[3] >= self.height:
             self.turtle.too_low(self.height)
+        self.sand_pos -= self.velocity
+        for obstacle in self.obstacles:
+            obstacle.pos_x -= self.velocity
