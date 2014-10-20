@@ -16,6 +16,7 @@ class Turtle(object):
 
         self.pos_x = position[0] - (self.image.get_width() / 2)
         self.pos_y = position[1] - (self.image.get_height() / 2)
+        self.rect = pygame.Rect(self.pos_x, self.pos_y, self.image.get_width(), self.image.get_height())
 
         self.vel_x = 0
         self.vel_y = 0
@@ -23,19 +24,25 @@ class Turtle(object):
     def position(self):
         return [self.pos_x, self.pos_y]
 
-    def bounds(self):
+    def bounds(self):  # TODO replace this to use rect
         return [self.pos_x, self.pos_y, self.pos_x + self.image.get_width(), self.pos_y + self.image.get_height()]
 
     def update(self, time):
-        self.pos_y += self.vel_y * time
+        self.move_position(0, self.vel_y * time)
+
+    def move_position(self, offset_x, offset_y):
+        self.rect.move_ip(offset_x, offset_y)
+        self.pos_x += offset_x
+        self.pos_y += offset_y
 
     def too_high(self, new_pos):  # Hehehe...
         self.vel_y = 0
+        self.move_position(0, -self.pos_y + new_pos)
         self.pos_y = new_pos
 
     def too_low(self, new_pos):
         self.vel_y = 0
-        self.pos_y = new_pos - self.image.get_height()
+        self.move_position(0, new_pos - (self.image.get_height() + self.pos_y))
 
     def swim(self, up):
         if up:

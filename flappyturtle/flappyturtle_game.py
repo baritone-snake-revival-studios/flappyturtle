@@ -37,7 +37,7 @@ def run_game():
                     game_turtle.swim(up=False)
 
         game_turtle.update((time - time_last_update) / 1000)
-        game_world.update((time - time_last_update) / 1000)
+        game_world.update((time - time_last_update) / 1000)  # Updates obstacles too
 
         DISPLAY_SURFACE.fill((55, 180, 200))
         # Background
@@ -56,10 +56,9 @@ def run_game():
         # Obstacles
         for obstacle in game_world.obstacles:
             DISPLAY_SURFACE.blit(obstacle.image, (obstacle.pos_x, obstacle.pos_y))
-            if obstacle.check_collision(game_turtle.bounds()):
+            if obstacle.check_collision(game_turtle):
                 player_score += 1
                 print(player_score)
-
 
         pygame.display.update()
         FpsClock.tick(FPS)

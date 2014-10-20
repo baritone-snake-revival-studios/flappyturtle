@@ -34,31 +34,42 @@ class World():
         return self.turtle
 
     def add_obstacle(self, obstacle_type):
-        coral_x = self.width
-        coral_y = self.height
         if obstacle_type == 'coral':
-            self.obstacles.append(Obstacle('sprites/coral_tall.png', coral_x, coral_y))
+            coral_x = self.width
+            coral_y = self.height
+            self.obstacles.append(Obstacle('sprites/coral_tall.png', coral_x, coral_y, self.velocity))
 
     def update(self, time):
+        # Player
         turtle_bounds = self.turtle.bounds()
         if turtle_bounds[1] <= 0:
             self.turtle.too_high(0)
         if turtle_bounds[3] >= self.height:
             self.turtle.too_low(self.height)
 
+        # Scrolling sand and background image
         self.sand_pos -= self.velocity * time
         if self.sand_pos <= -self.width:
             self.sand_pos += self.width
-
         self.background_pos -= self.velocity * time * 0.3
         if self.background_pos <= -self.width:
             self.background_pos += self.width
 
+        # Obstacle spawning
         self.next_obstacle -= time
-
         if self.next_obstacle <= 0:
             self.next_obstacle = random.randint(OBSTACLE_MIN_TIME, OBSTACLE_MAX_TIME)
             self.add_obstacle('coral')
 
+        # Obstacle movement and collision
+        remove_obstacles = []
         for obstacle in self.obstacles:
-            obstacle.pos_x -= self.velocity * time
+            obstacle.update(time)
+            if obstacle.rect.right <= 0:
+                remove_obstacles.append(obstacle)
+        if remove_obstacles:
+            self.obstacles = [o for o in self.obstacles if o not in remove_obstacles]
+            for obstacle in remove_obstacles:
+                del obstacle  # This probably isn't necessary
+
+
