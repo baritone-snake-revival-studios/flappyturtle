@@ -27,13 +27,9 @@ class Obstacle(object):
         self.pos_y += offset_y
 
     def check_collision(self, collider):
-        # Do basic rectangular collision first, cheaper on the CPU
-        if self.rect.colliderect(collider.rect):
-            print('rectangle')
-            # If the rectangles collide, test per-pixel
-            if pixel_perfect_check_collision(self, collider):
-                pygame.quit()
-                sys.exit()
+        if pixel_perfect_check_collision(self, collider):
+            pygame.quit()
+            sys.exit()
 
         # The player gains a point if they pass us
         if isinstance(collider, Turtle):

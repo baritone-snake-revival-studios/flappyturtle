@@ -16,7 +16,7 @@ class Turtle(object):
 
         self.pos_x = position[0] - (self.image.get_width() / 2)
         self.pos_y = position[1] - (self.image.get_height() / 2)
-        self.rect = pygame.Rect(self.pos_x, self.pos_y, self.image.get_width(), self.image.get_height())
+        self.rect = pygame.Rect(position[0], position[1], self.image.get_width(), self.image.get_height())
 
         self.vel_x = 0
         self.vel_y = 0

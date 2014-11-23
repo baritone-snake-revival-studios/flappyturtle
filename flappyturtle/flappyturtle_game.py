@@ -36,6 +36,7 @@ def run_game():
                 if event.key == pygame.K_DOWN:
                     game_turtle.swim(up=False)
 
+        # TODO Refactor into render function
         game_turtle.update((time - time_last_update) / 1000)
         game_world.update((time - time_last_update) / 1000)  # Updates obstacles too
 
